@@ -1,13 +1,53 @@
 :root {
     --bg: #f4f7fb;
+    --bg-accent: rgba(37, 99, 235, 0.12);
+    --bg-gradient-end: #f8fbff;
     --surface: #ffffff;
     --surface-soft: #eef4ff;
+    --card-bg: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
     --text: #1f2937;
     --muted: #5f6b7a;
     --primary: #2563eb;
     --primary-dark: #1d4ed8;
     --border: #dbe4f0;
+    --nav-bg: rgba(255, 255, 255, 0.88);
+    --nav-border: rgba(219, 228, 240, 0.9);
+    --hero-start: #0f172a;
+    --hero-end: #1e3a8a;
+    --hero-copy: rgba(255, 255, 255, 0.88);
     --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    --toggle-bg: #ffffff;
+    --toggle-text: #1f2937;
+    --toggle-border: #dbe4f0;
+    --toggle-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+    --timeline-border: #d9e1ec;
+    --secondary-muted: #6b7280;
+}
+
+body.dark-theme {
+    --bg: #0b1120;
+    --bg-accent: rgba(96, 165, 250, 0.14);
+    --bg-gradient-end: #111827;
+    --surface: #111827;
+    --surface-soft: #172036;
+    --card-bg: linear-gradient(180deg, #141c2f 0%, #111827 100%);
+    --text: #e5edf8;
+    --muted: #b6c2d9;
+    --primary: #60a5fa;
+    --primary-dark: #93c5fd;
+    --border: #263248;
+    --nav-bg: rgba(11, 17, 32, 0.88);
+    --nav-border: rgba(38, 50, 72, 0.9);
+    --hero-start: #111827;
+    --hero-end: #1d4ed8;
+    --hero-copy: rgba(226, 232, 240, 0.88);
+    --shadow: 0 18px 40px rgba(0, 0, 0, 0.32);
+    --toggle-bg: #172036;
+    --toggle-text: #e5edf8;
+    --toggle-border: #314056;
+    --toggle-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+    --timeline-border: #314056;
+    --secondary-muted: #94a3b8;
 }
 
 * {
@@ -22,9 +62,10 @@ body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 0 30%),
-        linear-gradient(135deg, #f8fbff 0%, var(--bg) 100%);
+        radial-gradient(circle at top left, var(--bg-accent), transparent 0 30%),
+        linear-gradient(135deg, var(--bg-gradient-end) 0%, var(--bg) 100%);
     color: var(--text);
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .navbar {
@@ -32,8 +73,8 @@ body {
     top: 0;
     z-index: 1000;
     backdrop-filter: blur(14px);
-    background: rgba(255, 255, 255, 0.88);
-    border-bottom: 1px solid rgba(219, 228, 240, 0.9);
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--nav-border);
 }
 
 .nav-container {
@@ -53,6 +94,12 @@ body {
     font-weight: 800;
 }
 
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .nav-links {
     display: flex;
     flex-wrap: wrap;
@@ -66,8 +113,26 @@ body {
 }
 
 .nav-links a:hover,
+.nav-brand:hover,
 .inline-link:hover {
     color: var(--primary-dark);
+}
+
+.theme-toggle {
+    border: 1px solid var(--toggle-border);
+    background: var(--toggle-bg);
+    color: var(--toggle-text);
+    border-radius: 999px;
+    padding: 10px 14px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--toggle-shadow);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
 .page-shell {
@@ -86,8 +151,8 @@ body {
 .hero-content {
     width: min(1100px, 100%);
     margin: 0 auto;
-    background: linear-gradient(135deg, #0f172a, #1e3a8a);
-    color: #fff;
+    background: linear-gradient(135deg, var(--hero-start), var(--hero-end));
+    color: var(--hero-copy);
     border-radius: 24px;
     padding: 48px;
     box-shadow: var(--shadow);
@@ -112,7 +177,7 @@ h1 {
     max-width: 720px;
     font-size: 1.05rem;
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.88);
+    color: var(--hero-copy);
 }
 
 .resume-layout {
@@ -174,7 +239,7 @@ li {
 }
 
 .profile-panel section {
-    background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+    background: var(--card-bg);
 }
 
 .skill-block + .skill-block {
@@ -221,7 +286,7 @@ li {
     margin-bottom: 20px;
     position: relative;
     padding-left: 18px;
-    border-left: 3px solid #d9e1ec;
+    border-left: 3px solid var(--timeline-border);
 }
 
 .education-item.highlight {
@@ -240,7 +305,7 @@ li {
 }
 
 .level {
-    color: #6b7280;
+    color: var(--secondary-muted);
     font-style: italic;
 }
 
@@ -252,6 +317,7 @@ li {
 
 @media (max-width: 768px) {
     .nav-container,
+    .nav-controls,
     .nav-links {
         flex-direction: column;
         align-items: flex-start;
