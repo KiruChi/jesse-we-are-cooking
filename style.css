@@ -14,6 +14,12 @@
     box-sizing: border-box;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -21,6 +27,48 @@ body {
         radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 0 30%),
         linear-gradient(135deg, #f8fbff 0%, var(--bg) 100%);
     color: var(--text);
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(14px);
+    background: rgba(255, 255, 255, 0.88);
+    border-bottom: 1px solid rgba(219, 228, 240, 0.9);
+}
+
+.nav-container {
+    width: min(1100px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 14px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.nav-brand {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    color: var(--primary-dark);
 }
 
 .page-shell {
@@ -174,6 +222,12 @@ p {
 }
 
 @media (max-width: 768px) {
+    .nav-container,
+    .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     .hero-content,
     section {
         padding: 24px;
