@@ -4,13 +4,13 @@
 - This is a small static website repository.
 - There is no application framework or package manager setup.
 - Main files:
-  - `/home/runner/work/jesse-we-are-cooking/jesse-we-are-cooking/team.html`
-  - `/home/runner/work/jesse-we-are-cooking/jesse-we-are-cooking/style.css`
-  - `/home/runner/work/jesse-we-are-cooking/jesse-we-are-cooking/Arsenii-Luchaninov.html`
-  - `/home/runner/work/jesse-we-are-cooking/jesse-we-are-cooking/Arsenii-style.css`
-  - `/home/runner/work/jesse-we-are-cooking/jesse-we-are-cooking/Petro-Luchaninov.html`
-  - `/home/runner/work/jesse-we-are-cooking/jesse-we-are-cooking/Petro-style.css`
-  - `/home/runner/work/jesse-we-are-cooking/jesse-we-are-cooking/Petro.jpg`
+  - `team.html`
+  - `style.css`
+  - `Arsenii-Luchaninov.html`
+  - `Arsenii-style.css`
+  - `Petro-Luchaninov.html`
+  - `Petro-style.css`
+  - `Petro.jpg`
 
 ## How to work efficiently here
 - Treat changes as direct edits to static HTML/CSS files.
