@@ -1,4 +1,4 @@
-# Copilot cloud agent instructions for this repository
+# Copilot cloud-agent instructions for this repository
 
 ## Repository overview
 - This is a small static website repository.
