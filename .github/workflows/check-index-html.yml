@@ -21,7 +21,7 @@ jobs:
         continue-on-error: true
 
       - name: Update README in main branch
-        if: steps.check_file.outcome == 'success'
+        if: steps.check_file.outputs.result_code == 0
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
