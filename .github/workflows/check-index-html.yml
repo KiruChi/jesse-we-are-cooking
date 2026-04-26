@@ -1,0 +1,37 @@
+name: Check Index HTML and Update README!!!
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check-and-update:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run check script
+        id: check_file
+        run: |
+          chmod +x check_index.sh
+          ./check_index.sh
+        continue-on-error: true
+
+      - name: Update README in main branch
+        if: steps.check_file.outcome == 'success'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git checkout main
+          
+          echo "Branch: ${{ github.ref_name }} | index.html exists ✅" >> README.md
+          
+          git add README.md
+          git commit -m "Update README: index.html found in ${{ github.ref_name }}"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.OUR_GITHUB_TOKEN }}
